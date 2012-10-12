@@ -1,0 +1,13 @@
+{
+    "name": "drx777/athrois",
+    "version": "0.1",
+    "dist": {
+        "url": "git://github.com/drx777/Athrois.git",
+        "type": "vcs"
+    },
+    "autoload": {
+        "psr-0": {
+            "Athrois": "src/"
+        }
+    }
+}
