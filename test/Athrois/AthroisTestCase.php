@@ -11,8 +11,9 @@ spl_autoload_register(
             . str_replace(["\\", "_"], "/", $match[2])
             . ".php";
         $file = __DIR__ . '/../../src/' . $className;
-        if (file_exists($file) && is_readable($file)) {}
+        if (file_exists($file) && is_readable($file)) {
             include_once $file;
+        }
     }
 );
 
