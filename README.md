@@ -14,6 +14,18 @@ There is a central pool object of type ```Athrois\Pool```, which accepts listene
 
 Not intended for production use, this is an example. If you happen to find any real world use, let me know how it works out.
 
+### Install via composer
+	"require": {
+	    …
+        "drx777/athrois": "dev-master"
+    },
+    "repositories": [
+	    {
+			"type": "vcs",
+			"url": "git://github.com/drx777/Athrois.git"
+	    }
+    ],
+
 ### Usage
 
 see example/demo01.php …
