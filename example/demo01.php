@@ -2,6 +2,7 @@
 
 namespace AthroisExample\Demo01;
 
+// it is recommended to use the composer autoloader facility instead
 require_once __DIR__ . '/../src/autoloader.php';
 
 use \Athrois\Pool;
@@ -46,14 +47,14 @@ class DemoNotifier {
 }
 
 $listener = new DemoListener();
-$event = new DemoEvent();
+$eventType = 'AthroisExample\Demo01\DemoEvent';
 
 $pool = new Pool();
-$pool->register($listener, $event);
+$pool->register($listener, $eventType);
 
 $notifier = new DemoNotifier($pool);
 $notifier->trigger(new DemoEvent());
-$pool->unsubscribe($listener, $event);
+$pool->unsubscribe($listener, $eventType);
 $notifier->trigger(new DemoEvent());
-$pool->register($listener, $event);
+$pool->register($listener, $eventType);
 $notifier->trigger(new DemoEvent());
