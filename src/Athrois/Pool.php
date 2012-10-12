@@ -17,9 +17,9 @@ class Pool {
 
     private $listeners = array();
 
-    public function register(Listener $object, Event $event)
+    public function register(Listener $object, $eventType)
     {
-        $this->listeners[static::getId($event)][] = $object;
+        $this->listeners[$eventType][] = $object;
     }
 
     public function notify(Event $event) {
@@ -32,15 +32,22 @@ class Pool {
         }
     }
 
-    public function unsubscribe(Listener $listener, Event $event = null)
+    public function unsubscribe(Listener $listener, $eventType = null)
     {
-        foreach ($this->listeners as $eventType => &$eventListeners) {
+        foreach ($this->listeners as $currentEventType => $eventListeners) {
             foreach ($eventListeners as $i => $currentListener) {
-                if ($currentListener == $listener) {
-                    unset($this->listeners[$eventType][$i]);
+                if ($currentListener == $listener &&
+                    is_null($eventType) || $currentEventType == $eventType) {
+                    unset($this->listeners[$currentEventType][$i]);
                 }
             }
-            if (count($eventListeners) == 0) {
+            $this->cleanupListeners();
+        }
+    }
+
+    private function cleanupListeners() {
+        foreach ($this->listeners as $eventType => $listeners) {
+            if (count($listeners) == 0) {
                 unset($this->listeners[$eventType]);
             }
         }
@@ -54,7 +61,7 @@ class Pool {
             : array();
     }
 
-    private static function getId($event)
+    public static function getId($event)
     {
         return get_class($event);
     }
