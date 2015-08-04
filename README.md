@@ -1,4 +1,6 @@
 ![Athrois build status](https://travis-ci.org/drx777/Athrois.svg?branch=master "Athrois build status")
+[![Coverage Status](https://coveralls.io/repos/drx777/Athrois/badge.svg?branch=master&service=github)](https://coveralls.io/github/drx777/Athrois?branch=master) [![Latest Stable Version](https://poser.pugx.org/drx777/athrois/v/stable)](https://packagist.org/packages/drx777/athrois) [![Total Downloads](https://poser.pugx.org/drx777/athrois/downloads)](https://packagist.org/packages/drx777/athrois) [![Latest Unstable Version](https://poser.pugx.org/drx777/athrois/v/unstable)](https://packagist.org/packages/drx777/athrois) [![License](https://poser.pugx.org/drx777/athrois/license)](https://packagist.org/packages/drx777/athrois)
+
 
 ## Athrois: A PHP Message Bus
 
