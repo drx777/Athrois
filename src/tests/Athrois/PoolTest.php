@@ -1,16 +1,16 @@
 <?php
 
-require_once __DIR__ . '/AthroisTestCase.php';
+namespace Athrois;
 
-class AthroisPoolTest extends AthroisTestCase
+class AthroisPoolTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testRegister() {
-        $pool = new Athrois\Pool();
+        $pool = new Pool();
 
         $mockEvent = $this->getMockBuilder('Athrois\\Event')->getMock();
         $mockListener = $this->getMockBuilder('Athrois\\Listener')->getMock();
-        $identifier = Athrois\Pool::getId($mockEvent);
+        $identifier = Pool::getId($mockEvent);
 
         $pool->register($mockListener, $identifier);
 
@@ -18,7 +18,7 @@ class AthroisPoolTest extends AthroisTestCase
     }
 
     public function testNotify() {
-        $pool = new Athrois\Pool();
+        $pool = new Pool();
 
         $mockEvent = $this->getMockBuilder('Athrois\\Event')->getMock();
 
@@ -31,20 +31,20 @@ class AthroisPoolTest extends AthroisTestCase
             ->method('notify')
             ->with($this->equalTo($mockEvent));
 
-        $pool->register($mockListener, Athrois\Pool::getId($mockEvent));
+        $pool->register($mockListener, Pool::getId($mockEvent));
 
         $pool->notify($mockEvent);
     }
 
     public function testUnsubscribe() {
 
-        $pool = new Athrois\Pool();
+        $pool = new Pool();
 
         $mockEvent1 = $this->getMockBuilder('Athrois\\Event')->getMock();
         $mockEvent2 = $this->getMockBuilder('AnotherEvent')->getMock();
         $mockListener = $this->getMockBuilder('Athrois\\Listener')->getMock();
-        $identifier1 = Athrois\Pool::getId($mockEvent1);
-        $identifier2 = Athrois\Pool::getId($mockEvent2);
+        $identifier1 = Pool::getId($mockEvent1);
+        $identifier2 = Pool::getId($mockEvent2);
 
         $pool->register($mockListener, $identifier1);
         $pool->register($mockListener, $identifier2);
@@ -55,13 +55,13 @@ class AthroisPoolTest extends AthroisTestCase
 
     public function testUnsubscribeAll() {
 
-        $pool = new Athrois\Pool();
+        $pool = new Pool();
 
         $mockEvent1 = $this->getMockBuilder('Athrois\\Event')->getMock();
         $mockEvent2 = $this->getMockBuilder('AnotherEvent')->getMock();
         $mockListener = $this->getMockBuilder('Athrois\\Listener')->getMock();
-        $identifier1 = Athrois\Pool::getId($mockEvent1);
-        $identifier2 = Athrois\Pool::getId($mockEvent2);
+        $identifier1 = Pool::getId($mockEvent1);
+        $identifier2 = Pool::getId($mockEvent2);
 
         $pool->register($mockListener, $identifier1);
         $pool->register($mockListener, $identifier2);

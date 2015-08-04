@@ -3,7 +3,7 @@
 namespace AthroisExample\Demo01;
 
 // it is recommended to use the composer autoloader facility instead
-require_once __DIR__ . '/../src/autoloader.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use \Athrois\Pool;
 use \Athrois\Event;
