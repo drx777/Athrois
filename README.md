@@ -1,3 +1,5 @@
+![Athrois build status](https://travis-ci.org/drx777/Athrois.svg?branch=master "Athrois build status")
+
 ## Athrois: A PHP Message Bus
 
 Athrois is a lightweight sample implementation in PHP of a centralized message bus, a variant of the Publish/Subscribe pattern.
